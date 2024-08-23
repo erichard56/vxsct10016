@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+	<title>Hung Lin - Login</title>
+	
+	<link type="text/css" rel="stylesheet" href="{% static 'media/css/login.css' %}" media="all" />
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,600" rel="stylesheet" type="text/css">
+	<link rel="icon" href="{% static 'bosquetaoista/hunglin.ico' %}" type="image/x-icon" />
+	
+	<script type="text/javascript" src="{% static 'media/js/jquery.min.js' %}"></script>
+</head>
+<body>
+	
+	<div id="content">
+		<div id="logo">
+			<img src="{% static 'bosquetaoista/hunglin.ico' %}" width="125" height="94" alt="Hung Lin" />
+		</div>
+		
+		<div class="success-message">
+			{% if messages %}
+				<ul class="messages">
+					{% for message in messages %}
+						<ul class="{{ message.tags }}">
+							<h4 class="alert-success text-center" style="padding-top: 5px; padding-bottom: 5px;">
+								{{ message }}
+							</h4>
+						</ul>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</div>
+
+		<div id="login">
+			<div id="error"></div>
+			<form method="POST" action="" name="login">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<!-- <img src="{ % static 'bosquetaoista/bosquetaoista.jpg' %}" id="loader"> -->
+				<input type="submit" name="send" value="Ingresar" />
+			</form>
+		</div>
+	</div>
+</body>
+</html>

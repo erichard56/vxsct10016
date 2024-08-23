@@ -1,0 +1,20 @@
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block cuerpo %}
+		
+<div id="login">
+	<div id="error"></div>
+	<form method="POST" action="" name="login">
+		{% csrf_token %}
+
+		{{ form.as_p }}
+		
+		<input type="submit" class="btn blue"name="send" value="Ingresar" />
+
+		<br> <br>
+	</form>
+</div>
+
+{% endblock %}

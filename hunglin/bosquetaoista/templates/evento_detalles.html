@@ -1,0 +1,44 @@
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block cuerpo %}
+		
+<div class="wrapper-pad">
+	<h2>{{ evento.tipo }} - {{ evento.nombre }}</h2>
+
+	{% for todo in todos %}
+		<h3>{{ todo.0.fecha }} - {{ todo.0.orador }}</h3>
+		<table border="1" rules="rows" id="eventos_lista" >
+			<thead>
+				<tr>
+					<td width="30%">Participantes</td>
+					<td width="30%">Estado</td>
+				</tr>
+			</thead>
+			<tbody>
+				{% if todo.1 %}
+					{% for cursante in todo.1 %}
+						<tr data-type="element">
+							<td>{{ cursante.persona.apellido }}, 
+								{{ cursante.persona.nombre }}
+							</td>
+							<td>{{ cursante.tipocursante.nombre }}</td>
+						</tr>
+					{% endfor %}
+				{% else %}
+					<tr>
+						<td>No Hay Cursantes</td>
+					</tr>
+				{% endif %}
+			</tbody>
+		</table>
+		<br><br>
+	{% endfor %}
+
+</div>
+
+<div class="clear" style="margin-bottom:40px;"></div>
+<div class="border" style="margin-bottom:30px;"></div>
+
+{% endblock %}

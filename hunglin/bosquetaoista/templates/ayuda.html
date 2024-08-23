@@ -1,0 +1,124 @@
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block cuerpo %}
+
+<div style="text-align: left; margin-left: 10px;">
+
+<h1>SISTEMA DE ALUMNOS HUNG LIN</h1> 
+
+<h2>INTRODUCCIÓN</h2>
+<br><br>
+
+<p>1) Vamos a distinguir entre 2 tipos de usuarios: usuarios (pueden utilizar el sistema y modificar datos), personas (son las que se dan de alta como ser alumnos, instructores que no vayan a usar el sistema)</p>
+<p>2) A los usuarios se le pueden otorgar privilegios según lo que querramos que tenga acceso:</p>
+    <p style="margin-left: 10px;">2.1) <b>Es staff</b>. Si está activado podrá utilizar “admin” y solo podrá modificar sus datos y de los integrantes de la casa  que es reponsable.</p>
+    <p style="margin-left: 10px;">2.2) <b>Es superusuario</b>. Si está activado podrá acceder a todas las funciones del sistema, incluso para dar de alta un nuevo usuario. <b>NO CONFUNDIR CON DAR DE ALTA UNA PERSONA</b>.</p>
+{% if request.user.is_superuser or request.user.is_staff %}
+	<p>3) La primera vez que se ingresa al sistema hay que usar el usuario <b>hunglin</b> con clave <b>Rafaela4840</b>.</p>
+	<p>4) Mediante este usuario podremos dar de alta a nuevos usuarios y personas. La idea es dar de alta un usuario e ingresar como él para utilizar el sistema.</p>
+{% endif %}
+<p>5) Si queremos que una persona se convierta en administrador de su Casa y de sus alumnos, debemos crear un usuario (http://vxsct10016.avnam.net:8001/admin) con los privilegios antes mencionados (uno o ambos) y asignarle ese nombre de usuario a la Persona.</p>
+
+
+<h2>INGRESO AL SISTEMA</h2>
+<br><br>
+<p>Para ingresar al sistema debemos entrar a la página http://vxsct10016.avnam.net:8001 en el cual  ingresaremos con nuestro usuario y clave.</p>
+<br>
+<img src="{% static 'ayuda/login.jpg' %}" style="border: 1px solid #555;" width="90%">
+<br><br>
+<p>Al ingresar al sistema, veremos la siguiente pantalla, donde tenemos todas las opciones del sistema.</p>
+<img src="{% static 'ayuda/inicio.jpg' %}" style="border: 1px solid #555;" width="90%">
+<br><br>
+
+
+<h2>NUEVOS USUARIOS</h2> 
+<p>Para dar de alta un usuario, tenemos la opcion <Registro> que nos permitirá dar de alta los datos necesarios para que una persona pueda utilizar el sistema.</p>
+<img src="{% static 'ayuda/registro.jpg' %}" style="border: 1px solid #555;" width="90%">
+<br><br>
+<p>Es <b>staff</b>. Si está activado podrá utilizar “admin” y sólo modificar susdatos y de los integrantes de la casa  que es reponsable solamente.</p>	
+<p>Es <b>superusuario</b>. Si está activado podrá acceder a todas las funciones del sistema, incluso para dar de alta un nuevo usuario. <b>NO CONFUNDIR CON DAR DE ALTA UNA PERSONA</b>.</p>
+<p>Debemos ingresar todos los datos y apretar <b>Confirmar</b> o <b>Volver</b>.</p>
+
+
+<h2>CAMBIO DE CLAVE</h2>
+<img src="{% static 'ayuda/cambiarclave.jpg' %}" style="border: 1px solid #555;" width="90%">
+<br><br>
+
+<h2>CASAS</h2>
+<p>
+Se mostrará una lista de todas las casas existentes, junto con la cantidad de alumnos de esa casa y para cada Casa la cantidad de Alumnos Activos / No Activos / Fallecidos, columnas A/N/F. </p>
+<img src="{% static 'ayuda/casas.jpg' %}" style="border: 1px solid #555;" width="90%">
+<br><br>
+<p>Cliquendo en <b>+ Nueva Casa</b> podremos ingresar los datos de una nueva casa.</p>
+<img src="{% static 'ayuda/nuevacasa.jpg' %}" style="border: 1px solid #555;" width="90%">
+<br><br>
+<p>Tenemos 2 posibles acciones:</p>
+<p><img src="{% static 'ayuda/lapiz.jpg' %}" style="border: 1px solid #555;" width="5%"> Esta opción nos permite modificar cualquier dato de la Casa.</p>
+<p><img src="{% static 'ayuda/gente.jpg' %}" style="border: 1px solid #555;" width="5%""> Esta opción nos permite listar todas las personas pertenecientes a esa Casa</p>
+<img src="{% static 'ayuda/casadetalle.jpg' %}" style="border: 1px solid #555;" width="90%">
+<br><br>
+
+<h2>GRADOS</h2>
+<img src="{% static 'ayuda/grados.jpg' %}" style="border: 1px solid #555;" width="90%">
+<br><br>
+<img src="{% static 'ayuda/gradodetalle.jpg' %}" style="border: 1px solid #555;" width="90%">
+<br><br>
+
+
+<h2>PERSONAS</h2>
+<img src="{% static 'ayuda/personas.jpg' %}" style="border: 1px solid #555;" width="90%">
+<br><br>
+
+<p><img src="{% static 'ayuda/lapiz.jpg' %}" style="border: 1px solid #555;" width="5%"> Permite modificar datos de una Persona.</p>
+
+<p><img src="{% static 'ayuda/detalles.jpg' %}" style="border: 1px solid #555;" width="5%"> Muestra todos los datos de una Persona,  Eventos y Extras realizados.</p>
+
+<p><img src="{% static 'ayuda/info.jpg' %}" style="border: 1px solid #555;" width="5%"> Para agregar extras a una Persona.</p>
+
+<p><img src="{% static 'ayuda/activo.jpg' %}" style="border: 1px solid #555;" width="5%"> Marca una persona como No Activa.</p>
+
+<p><img src="{% static 'ayuda/noactivo.jpg' %}" style="border: 1px solid #555;" width="5%"> Marca una persona como Activa.</p>
+<br><br>
+
+<h2>TIPOS DE EVENTOS</h2>
+<img src="{% static 'ayuda/tipoeventos.jpg' %}" style="border: 1px solid #555;" width="90%">
+<br><br>
+<img src="{% static 'ayuda/tipoeventonuevo.jpg' %}" style="border: 1px solid #555;" width="90%">
+<br><br>
+
+<h2>EVENTOS</h2>
+<img src="{% static 'ayuda/eventos.jpg' %}" style="border: 1px solid #555;" width="90%">
+<br><br>
+<img src="{% static 'ayuda/eventonuevo.jpg' %}" style="border: 1px solid #555;" width="90%">
+<br><br>
+
+
+
+<h2>AGENDA</h2>
+<img src="{% static 'ayuda/agenda.jpg' %}" style="border: 1px solid #555;" width="90%">
+<br><br>
+<img src="{% static 'ayuda/agendanuevo.jpg' %}" style="border: 1px solid #555;" width="90%">
+<br><br>
+<img src="{% static 'ayuda/agendaevento.jpg' %}" style="border: 1px solid #555;" width="90%">
+<br><br>
+
+<p><img src="{% static 'ayuda/anotado.jpg' %}" style="border: 1px solid #555;" width="5%"> Marcar Anotado.</p>
+<p><img src="{% static 'ayuda/nofinalizado.jpg' %}" style="border: 1px solid #555;" width="5%"> Marcar No Finalizado.</p>
+<p><img src="{% static 'ayuda/finalizado.jpg' %}" style="border: 1px solid #555;" width="5%"> Marcar Finalizado.</p>
+<p><img src="{% static 'ayuda/eliminado.jpg' %}" style="border: 1px solid #555;" width="5%"> Marcar Eliminado.</p>
+<br><br>
+
+
+<h2>PROCEDIMIENTO PARA DAR DE ALTA UN EVENTO</h2>
+<br><br>
+<p>1. Los tipos de evento existentes son: CURSO, ACTIVIDAD y PRÁCTICA, pudiendo agregar nuevos con la opción TIPO DE EVENTOS.</p>
+<p>2. En EVENTOS podremos definir un tipo de Curso, Actividad o Práctica en forma general, por ejemplo “Ceremonia del Té”, incluso pudiendo agregar un comentario.</p>
+<p>3. Una vez definido el Evento, se debe AGENDAR. Acá eligiremos el Evento, la fecha y el orador.</p>
+<p>4. Una vez agendado, agregaremos los cursantes.</p>
+<br><br>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,44 @@
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block cuerpo %}
+		
+<div class="wrapper-pad">
+	<h2>Eventos
+		<div class="fright" style="height:5px; margin-right:55px;"></div>
+			<a href="{% url 'evento_am' 0 %}" name="nuevo_evento" class="btn blue fright"><i class="fa fa-plus"></i>Nuevo Evento</a> <br>
+	</h2>
+
+	<table border="1" rules="rows" id="eventos_lista" >
+		<thead>
+			<tr>
+				<td width="10%">ID</td>
+				<td width="20%">Tipo</td>
+				<td width="30%">Nombre</td>
+				<td width="30%">Descripción</td>
+				<td width="10%">Acciones</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for evento in eventos %}
+				<tr data-type="element" data-id={{ evento.id }}>
+					<td class="hover" data-type="id">{{ evento.id }}</td>
+					<td class="hover" data-type="id">{{ evento.tipo }}</td>
+					<td class="hover" data-type="name">{{ evento.nombre }}</td>
+					<td class="hover" data-type="name">{{ evento.descripcion }}</td>
+					<td>
+						<a href="{% url 'evento_am' evento.id %}" name="c3" title="Modificar Evento"><i class="fa fa-pencil"></i></a>
+						<a href="{% url 'evento_detalles' evento.id %}" name="c3" title="Participantes al Evento"><i class="fa fa-users"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+</div>
+
+<div class="clear" style="margin-bottom:40px;"></div>
+<div class="border" style="margin-bottom:30px;"></div>
+
+{% endblock %}

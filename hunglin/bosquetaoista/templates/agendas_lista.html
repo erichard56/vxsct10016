@@ -1,0 +1,42 @@
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block cuerpo %}
+		
+<div class="wrapper-pad">
+	<h2>Agenda
+		<div class="fright" style="height:5px; margin-right:55px;"></div>
+			<a href="{% url 'agenda_am' 0 %}" name="nueva_agenda" class="btn blue fright"><i class="fa fa-plus"></i>Nueva Agenda</a> <br>
+	</h2>
+
+	<table border="1" rules="rows" id="agendas_lista" >
+		<thead>
+			<tr>
+				<td width="30%">Evento</td>
+				<td width="15%">Fecha</td>
+				<td width="35%">Orador</td>
+				<td width="15%">Acciones</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for agenda in agendas %}
+				<tr data-type="element" data-id={{ agenda.id }}>
+					<td class="hover" data-type="evento">{{ agenda.evento }}</td>
+					<td class="hover" data-type="fecha">{{ agenda.fecha|date:'d-m-Y' }}</td>
+					<td class="hover" data-type="orador">{{ agenda.orador }}</td>
+					<td>
+						<a href="{% url 'agenda_am' agenda.id %}" name="c3" title="Modificar Agenda"><i class="fa fa-pencil"></i></a>
+						<a href="{% url 'agenda_cursantes' agenda.id %}" name="c3" title="Cursantes"><i class="fa fa-users"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+</div>
+
+<div class="clear" style="margin-bottom:40px;"></div>
+<div class="border" style="margin-bottom:30px;"></div>
+
+{% endblock %}

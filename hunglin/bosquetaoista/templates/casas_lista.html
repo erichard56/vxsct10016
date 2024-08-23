@@ -1,0 +1,45 @@
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block cuerpo %}
+		
+<div class="wrapper-pad">
+	<h2>Casas 		
+		<div class="fright" style="height:5px; margin-right:55px;"></div>
+		<a href="{% url 'casa_am' 0 %}" name="nueva_casa" class="btn blue fright"><i class="fa fa-plus"></i>Nueva Casa</a> <br>
+	</h2>
+
+	<table border="1" rules="rows" id="casas_lista" >
+			<thead>
+				<tr>
+					<td width="20%">Nombre</td>
+					<td width="20%">Dirección</td>
+					<td width="25%">Responsable</td>
+					<td width="15%">Alumnos (A/N/F)</td>
+					<td width="10%">Acciones</td>
+				</tr>
+			</thead>
+			<tbody>
+				{% for casa in casas %}
+					<tr data-type="element">
+						<td>{{ casa.1 }}</td>
+						<td>{{ casa.2 }}</td>
+						<td>{{ casa.3 }}</td>
+						<td>{{ casa.4 }} / {{ casa.5 }} / {{ casa.6 }}</td>
+						<td>
+							<a href="{% url 'casa_am' casa.0 %}" title="Modificar Casa"><i class="fa fa-pencil"></i></a>
+							<a href="{% url 'casa_detalle' casa.0 %}" title="Alumnos"><i class="fa fa-users" aria-hidden="true"></i></a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+	
+	<div class="clear" style="margin-bottom:40px;"></div>
+	<div class="border" style="margin-bottom:30px;"></div>
+</div>
+
+{% endblock %}

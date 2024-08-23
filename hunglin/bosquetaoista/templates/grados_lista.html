@@ -1,0 +1,42 @@
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block cuerpo %}
+		
+<div class="wrapper-pad">
+	<h2>Grados
+		<div class="fright" style="height:5px; margin-right:55px;"></div>
+		<a href="{% url 'grado_am' 0 %}" name="nuevo_grado" class="btn blue fright"><i class="fa fa-plus"></i>Nuevo Grado</a>
+	</h2>
+
+	<table border="1" rules="rows" id="grados_lista" >
+		<thead>
+			<tr>
+				<td width="40%">Nombre</td>
+				<td width="15%">Activos</td>
+				<td width="15%">No Activos</td>
+				<td width="20%">Acciones</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for grado in grados %}
+				<tr data-type="element" data-id={{ grado.0 }}>
+					<td>{{ grado.1 }}</td>
+					<td>{{ grado.2 }}</td>
+					<td>{{ grado.3 }}</td>
+					<td>
+						<a href="{% url 'grado_am' grado.0 %}" name="c3" title="Modificar Grado"><i class="fa fa-pencil"></i></a>
+						<a href="{% url 'grado_detalle' grado.0 %}" name="c3" title="Integrantes"><i class="fa fa-users" aria-hidden="true"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+</div>
+	
+<div class="clear" style="margin-bottom:40px;"></div>
+<div class="border" style="margin-bottom:30px;"></div>
+
+{% endblock %}

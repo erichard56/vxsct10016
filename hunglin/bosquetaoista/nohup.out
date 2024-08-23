@@ -1,0 +1,75 @@
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+[22/Aug/2024 17:43:31] "POST /ingresar/ HTTP/1.1" 302 0
+[22/Aug/2024 17:43:32] "GET /home/ HTTP/1.1" 200 3695
+[22/Aug/2024 17:43:34] "GET /personas_lista/1 HTTP/1.1" 200 55299
+[22/Aug/2024 17:43:34] "GET /media/images/IMG_20240820_203335_464.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:34] "GET /media/images/IMG_20240820_202209_660.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:34] "GET /media/images/IMG_20240820_203727_317.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:34] "GET /media/images/IMG_20240820_203447_425.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:34] "GET /media/images/IMG_20240820_203122_055_lZMsQ2Z.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:34] "GET /media/images/err_hX7dirl.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:34] "GET /media/images/IMG_20240820_203821_459.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:35] "GET /media/images/IMG_20240820_204143_868.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:35] "GET /media/images/IMG_20240820_203539_375.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:35] "GET /media/images/IMG_20240820_204537_975.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:35] "GET /media/images/IMG_20240820_204641_990.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:35] "GET /media/images/IMG_20240820_195401_822.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:35] "GET /media/images/IMG_20240820_200029_092.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:35] "GET /media/images/IMG_20240820_204437_119.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:35] "GET /media/images/IMG_20240820_201415_200.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:35] "GET /media/images/IMG_20240820_202932_074.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:35] "GET /media/images/IMG_20240820_200730_199.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:35] "GET /media/images/IMG_20240820_202027_141.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:35] "GET /media/images/IMG_20240820_202607_801.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:35] "GET /media/images/IMG_20240820_202932_074_vXdU7nY.jpg HTTP/1.1" 304 0
+[22/Aug/2024 17:43:44] "GET /salir/ HTTP/1.1" 302 0
+[22/Aug/2024 17:43:44] "GET /ingresar/ HTTP/1.1" 200 1634
+Invalid HTTP_HOST header: 'hunglin.ar'. You may need to add 'hunglin.ar' to ALLOWED_HOSTS.
+Bad Request: /
+[22/Aug/2024 17:51:17] "GET / HTTP/1.1" 400 70130
+Invalid HTTP_HOST header: 'mail.hunglin.com.ar'. You may need to add 'mail.hunglin.com.ar' to ALLOWED_HOSTS.
+Bad Request: /
+[22/Aug/2024 19:29:57] "GET / HTTP/1.1" 400 70265
+[22/Aug/2024 19:52:01] "GET / HTTP/1.1" 200 1634
+[22/Aug/2024 19:52:12] "POST / HTTP/1.1" 302 0
+[22/Aug/2024 19:52:13] "GET /home/ HTTP/1.1" 200 3583
+[22/Aug/2024 19:54:33] "GET /personas_lista/1 HTTP/1.1" 200 55299
+[22/Aug/2024 19:54:33] "GET /media/images/IMG_20240820_203233_523.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:34] "GET /media/images/IMG_20240820_203335_464.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:34] "GET /media/images/IMG_20240820_202209_660.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:34] "GET /media/images/IMG_20240820_203447_425.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:34] "GET /media/images/err_hX7dirl.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:34] "GET /media/images/IMG_20240820_203122_055_lZMsQ2Z.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:34] "GET /media/images/IMG_20240820_203727_317.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:34] "GET /media/images/IMG_20240820_203821_459.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:35] "GET /media/images/IMG_20240820_204031_809.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:35] "GET /media/images/IMG_20240820_204143_868.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:35] "GET /media/images/IMG_20240820_203539_375.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:35] "GET /media/images/IMG_20240820_204641_990.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:36] "GET /media/images/IMG_20240820_204437_119.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:36] "GET /media/images/IMG_20240820_204537_975.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:36] "GET /media/images/IMG_20240820_200029_092.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:36] "GET /media/images/IMG_20240820_195401_822.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:36] "GET /media/images/IMG_20240820_202932_074.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:36] "GET /media/images/IMG_20240820_200730_199.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:36] "GET /media/images/IMG_20240820_201415_200.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:37] "GET /media/images/IMG_20240820_202607_801.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:37] "GET /media/images/IMG_20240820_202932_074_vXdU7nY.jpg HTTP/1.1" 304 0
+[22/Aug/2024 19:54:37] "GET /media/images/IMG_20240820_202027_141.jpg HTTP/1.1" 304 0
+[22/Aug/2024 20:02:25] "GET /casas_lista/ HTTP/1.1" 200 6616
+[22/Aug/2024 20:02:29] "GET /casa_detalle/2 HTTP/1.1" 200 7892
+[22/Aug/2024 20:02:34] "GET /grados_lista/ HTTP/1.1" 200 5239
+[22/Aug/2024 20:02:36] "GET /casas_lista/ HTTP/1.1" 200 6616
+[22/Aug/2024 20:02:38] "GET /casa_detalle/2 HTTP/1.1" 200 7892
+[22/Aug/2024 20:02:44] "GET /persona_am/98 HTTP/1.1" 200 10012
+[22/Aug/2024 20:02:49] "GET /grados_lista/ HTTP/1.1" 200 5239
+[22/Aug/2024 20:02:54] "GET /grado_detalle/3 HTTP/1.1" 200 17117
+[22/Aug/2024 20:02:57] "GET /persona_am/98 HTTP/1.1" 200 10012
+[22/Aug/2024 20:03:02] "GET /home/ HTTP/1.1" 200 3684
+[22/Aug/2024 20:03:04] "GET /salir/ HTTP/1.1" 302 0
+[22/Aug/2024 20:03:05] "GET /ingresar/ HTTP/1.1" 200 1634
+[22/Aug/2024 21:40:00] "GET / HTTP/1.1" 200 1634
+Invalid HTTP_HOST header: 'bosquetaoista.ar'. You may need to add 'bosquetaoista.ar' to ALLOWED_HOSTS.
+Bad Request: /
+[22/Aug/2024 22:16:55] "GET / HTTP/1.1" 400 70220

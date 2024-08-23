@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html lang="es">
+
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+	<title>Hung Lin</title>
+	
+	{% if pagina == 1 %}
+		<link type="text/css" rel="stylesheet" href="{% static 'media/css/home.css' %}" media="all" />
+	{% else %}
+		<link type="text/css" rel="stylesheet" href="{% static 'media/css/site.css' %}" media="all" />
+		<link type="text/css" rel="stylesheet" href="{% static 'media/css/site-forms.css' %}" media="all" />
+		<link type="text/css" rel="stylesheet" href="{% static 'media/css/site-responsive.css' %}" media="all" />
+	{% endif %}
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link type="text/css" rel="stylesheet" href="{% static 'media/css/home.css' %}" media="all" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,600" rel="stylesheet" type="text/css">
+	<link rel="icon" href="{% static 'bosquetaoista/hunglin.ico' %}" type="image/x-icon" />
+
+	<script type="text/javascript" src="{% static 'media/js/jquery.min.js' %}"></script>
+
+	<body>
+		<div id="main-wrapper">
+			<div id="header">
+				<div class="left">
+					<a href="https://www.bosquetaoista.com.ar/" target='_blank'><img src="{% static 'bosquetaoista/bosquetaoista.jpg' %}" width="300" height="50" alt="Hung Lin" /></a>
+					<div style="font-size:12px; font-style:italic;color:#bbb;">{{ datos.1 }}</div>
+				</div>
+				<div class="left">
+					Hola {{ user.get_full_name }} !!
+				</div>
+				<div class="right">
+					<a href="{% url 'cambiar_clave' %}" title="Cambio de Clave"><i class="fa-solid fa-key"></i> Cambiar Clave</a>
+					{% if request.user.is_superuser %}
+						<a href="{% url 'registro' %}" title="Registro"><i class="fa-regular fa-address-card"></i> Registro</a>
+					{% endif %}
+					<a href="{% url 'ayuda' %}" title="Ayuda"><i class="fa-solid fa-question"></i> Ayuda</a>
+					<a href="{% url 'salir' %}" title="Salir"><i class="fa-solid fa-arrow-right-from-bracket"></i> Salir</a>
+				</div>
+
+				<div class="clear"></div>
+			</div>
+
+			<input type="checkbox" class="toggle" id="opmenu" style="display:none"/>
+			<label for="opmenu" id="open-menu"><i class="fa fa-align-justify"></i> Menu</label>
+
+			<div id="menu">
+				<ul id="menuli">
+					<li {% if pagina == 1 %} class="active" {% endif %}><a href="{% url 'home' %}" title="Home"><i class="fa fa-home"></i> Inicio</a></li>
+					<li {% if pagina == 6 or pagina == 7 %} class="active" {% endif %}><a href="{% url 'personas_lista' 1 %}" title="Personas"><i class="fa-solid fa-users"></i> Personas</a></li>
+					{% if request.user.is_superuser %}
+						<li {% if pagina == 10 or pagina == 11 %} class="active" {% endif %}><a href="{% url 'agendas_lista' %}" title="Agenda"><i class="fa-solid fa-calendar-days"></i> Agenda</a></li>
+						<li {% if pagina == 8 or pagina == 9 %} class="active" {% endif %}><a href="{% url 'eventos_lista' %}" title="Eventos"><i class="fa fa-list-ul"></i> Eventos</a></li>
+						<li {% if pagina == 4 %} class="active" {% endif %}><a href="{% url 'casas_lista' %}" title="Casas"><i class="fa fa-list-ul"></i> Casas</a></li>
+						<li {% if pagina == 2 %} class="active" {% endif %}><a href="{% url 'grados_lista' %}" title="Grados"><i class="fa fa-list-ul"></i> Grados</a></li>
+						<li {% if pagina == 12 or pagina == 13 %} class="active" {% endif %}><a href="{% url 'tipoeventos_lista' %}" title="Agenda"><i class="fa fa-list-ul"></i> Tipo Eventos</a></li>
+						<li {% if pagina == 14 or pagina == 15 %} class="active" {% endif %}><a href="{% url 'tipoextras_lista' %}" title="Agenda"><i class="fa fa-list-ul"></i> Tipo Extras</a></li>
+					{% endif %}
+				</ul>
+			</div>
+
+			<div class="success-message">
+				{% if messages %}
+					<ul class="messages">
+						{% for message in messages %}
+							<li class="{{ message.tags }}">
+								<h4 class="alert-success text-center" style="padding-top: 5px; padding-bottom: 5px;">
+									{{ message }}
+								</h4>
+							</li>
+						{% endfor %}
+					 </ul>
+				 {% endif %}
+			</div>
+			
+			{% load crispy_forms_tags %}
+
+			{% block cuerpo %}
+			{% endblock %}
+
+		</div>
+		<script src="https://kit.fontawesome.com/509366d41c.js" crossorigin="anonymous"></script>
+	</body>
+</html>

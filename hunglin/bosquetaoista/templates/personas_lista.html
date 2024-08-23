@@ -1,0 +1,91 @@
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block cuerpo %}
+		
+<div class="wrapper-pad">
+	<h2>Personas</h2>
+	<form method="POST" action="">
+		{% csrf_token %}
+		<input type="text" name="busca" placeholder="Buscar..." class="search fleft" />
+		<select name="estado" style="width:100px; height:25px;">
+			<option value="0">Todos</option>
+			{% for estado in estados %}
+				<option value="{{ estado.id }}">{{ estado.nombre }}s</option>
+			{% endfor %}
+		</select>
+		<input type="submit" value="Mostrar" class="btn blue frigth">
+		{% if request.user.is_superuser or request.user.is_staff %}
+			<div class="fright" style="height:5px; margin-right:55px;">
+				<a href="{% url 'persona_am' 0 %}" name="nueva_persona" class="btn blue fright"><i class="fa fa-plus"></i>Nueva Persona</a> <br>
+			</div>
+		{% endif %}
+	</form>
+
+	<table border="1" rules="rows" id="casas_lista" >
+		<thead>
+			<tr>
+				<td width="5%">Orden</td>
+				<td width="10%">Estado</td>
+				<td width="40%">Apellido y Nombre</td>
+				<td width="10%">Grado</td>
+				<td width="20%">Casa de Práctica</td>
+				<td width="15%">Acciones</td>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% if yosoy %}
+				<tr data-type="element" data-id={{ yosoy.id }}>
+					<td class="hover" data-type="id">{{ yosoy.orden }}</td>
+					<td class="hover" data-type="activo">{{ yosoy.estado }}</td>
+					<td class="hover" data-type="id">{{ yosoy.apellido }}, {{ yosoy.nombre }}</td>
+					<td class="hover" data-type="name">{{ yosoy.grado }}</td>
+					<td class="hover" data-type="name">{{ yosoy.casa_practica }}</td>
+					<td>
+						{% if request.user.is_superuser or request.user.is_staff %}
+							<a href="{% url 'persona_am' yosoy.id %}" name="c3" title="Modificar Persona"><i class="fa fa-pencil"></i></a>
+							<a href="{% url 'persona_detalle' yosoy.id %}" name="c3" title="Detalles Persona"><i class="fa fa-graduation-cap"></i></a>
+							<a href="{% url 'persona_tipoextras_lista' yosoy.id %}" name="c3" title="Información Extra"><i class="fa fa-info"></i></a>
+						{% endif %}
+					</td>
+				</tr>
+			{% endif %}
+			{% for persona in personas %}
+				<tr data-type="element">
+					<td class="hover" >{{ persona.0.orden }}</td>
+					<td class="hover" >{{ persona.0.estado }}</td>
+					<td class="hover">
+						{% if persona.0.foto %}
+							<img src="{% get_media_prefix %}{{ persona.0.foto }}" height='50' width='50' />
+						{% else %}
+							<img src="{% get_media_prefix %}images/nophoto.jpg" height='50' width='50' />
+						{% endif %}
+						{{ persona.0.apellido }}, {{ persona.0.nombre }}
+					</td>
+					<td class="hover" data-type="name">{{ persona.0.grado }}</td>
+					<td class="hover" data-type="name">{{ persona.0.casa_practica }}</td>
+					<td>
+						{% if request.user.is_superuser or request.user.is_staff %}
+							<a href="{% url 'persona_am' persona.0.id %}" title="Modificar Persona"><i class="fa fa-pencil"></i></a>
+							<a href="{% url 'persona_detalle' persona.0.id %}" title="Detalles Persona"><i class="fa-solid fa-file-lines"></i></a>
+							<a href="{% url 'persona_tipoextras_lista' persona.0.id %}" name="c3" title="Información Extra"><i class="fa fa-info"></i></a>
+							{% if persona.0.estado.nombre == 'Activo' %}
+								<a href="{% url 'persona_cambia_estado' persona.0.id %}" onclick="return confirm('Esta seguro?')" title="Marcar No Activo"><i class="fa-regular fa-face-smile"></i></a>
+							{% else %}
+								<a href="{% url 'persona_cambia_estado' persona.0 %}" onclick="return confirm('Esta seguro?')" title="Marcar Activo"><i class="fa-solid fa-face-frown"></i></a>
+							{% endif %}
+						{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+</div>
+
+<div class="clear" style="margin-bottom:40px;"></div>
+<div class="border" style="margin-bottom:30px;"></div>
+
+{% endblock %}

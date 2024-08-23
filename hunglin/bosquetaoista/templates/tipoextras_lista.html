@@ -1,0 +1,39 @@
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block cuerpo %}
+		
+<div class="wrapper-pad">
+	<h2>Tipos Info Extra
+		<div class="fright" style="height:5px; margin-right:55px;"></div>
+			<a href="{% url 'tipoextra_am' 0 %}" name="nuevo_evento" class="btn blue fright"><i class="fa fa-plus"></i>Nuevo Tipo Extra</a> <br>
+	</h2>
+
+	<table border="1" rules="rows" id="eventos_lista" >
+		<thead>
+			<tr>
+				<td width="20%">Nombre</td>
+				<td width="50%">Descripción</td>
+				<td width="20%">Acciones</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for tipoextra in tipoextras %}
+				<tr data-type="element" data-id={{ tipoextra.id }}>
+					<td class="hover" data-type="name">{{ tipoextra.nombre }}</td>
+					<td class="hover" data-type="name">{{ tipoextra.descripcion }}</td>
+					<td>
+						<a href="{% url 'tipoextra_am' tipoextra.id %}" name="c3" title="Modificar Tipo Extra"><i class="fa fa-pencil"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+</div>
+
+<div class="clear" style="margin-bottom:40px;"></div>
+<div class="border" style="margin-bottom:30px;"></div>
+
+{% endblock %}

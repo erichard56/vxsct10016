@@ -1,0 +1,47 @@
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block cuerpo %}
+		
+<div class="wrapper-pad">
+	<h1>{{ agenda }}</h1>
+
+	<h2>Lista de Cursantes</h2>
+	<table border="1" rules="rows" id="casas_lista" >
+		<thead>
+			<tr>
+				<td width="5%">Id</td>
+				<td width="20%">Estado</td>
+				<td width="20%">Apellido</td>
+				<td width="20%">Nombre</td>
+				<td width="20%">Casa de Práctica</td>
+				<td width="15%">Acciones</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for cursante in cursantes %}
+				<tr data-type="element" data-id={{ cursante.0 }} >
+					<td>{{ cursante.0 }}</td>
+					<td>{{ cursante.1 }}</td>
+					<td data-type="apellido">{{ cursante.2 }}</td>
+					<td data-type="nombre">{{ cursante.3 }}</td>
+					<td data-type="nombre">{{ cursante.4 }}</td>
+					<td>
+						<a href="{% url 'agenda_cursante_estado' cursante.5 cursante.6 "Anotado" %}" name="c3" title="Anotado"><i class="fa fa-check" aria-hidden="true"></i></a>
+						<a href="{% url 'agenda_cursante_estado' cursante.5 cursante.6 "No Finalizado" %}" name="c3" title="No Finalizado"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></a>
+						<a href="{% url 'agenda_cursante_estado' cursante.5 cursante.6 "Finalizado" %}" name="c3" title="Finalizado"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+						<a href="{% url 'agenda_cursante_estado' cursante.5 cursante.6 "Eliminar" %}" name="c3" title="Eliminar"><i class="fa fa-eraser" aria-hidden="true"></i></a>
+					</td>
+				</tr>
+			
+			{% endfor %}
+		</tbody>
+	</table>
+
+</div>
+
+<div class="clear" style="margin-bottom:40px;"></div>
+<div class="border" style="margin-bottom:30px;"></div>
+
+{% endblock %}
