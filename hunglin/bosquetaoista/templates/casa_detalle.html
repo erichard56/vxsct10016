@@ -15,36 +15,36 @@
 
 		<br>
 		<h2>Alumnos</h2>
-			<table border="1" rules="rows" id="casas_lista" >
-				<thead>
+		<table border="1" rules="rows" id="casas_lista" >
+			<thead>
+				<tr>
+					<td width="10%">Orden</td>
+					<td width="50%">Apellido y Nombre</td>
+					<td width="20%">Grado</td>
+					<td width="10%">Acciones</td>
+				</tr>
+			</thead>
+			<tbody>
+				{% for persona in personas %}
 					<tr>
-						<td width="10%">Orden</td>
-						<td width="50%">Apellido y Nombre</td>
-						<td width="20%">Grado</td>
-						<td width="10%">Acciones</td>
+						<td>{{ persona.orden }}</td>
+						<td>
+							{% if persona.foto  %}
+								<img src="{{ persona.foto.url }}" height='50' width='50' />
+							{% else %}
+								<img src="{% get_media_prefix %}bosquetaoista/nophoto.jpg"  height='50' width='50' alt="" />
+						{% endif %}
+							{{ persona.apellido }}, {{ persona.nombre }}
+						</td>
+						<td>{{ persona.grado }}</td>
+						<td>
+							<a href="{% url 'persona_am' persona.id %}" name="c3" title="Modificar Persona"><i class="fa fa-pencil"></i></a>
+							<a href="{% url 'persona_detalle' persona.id %}" title="Detalles Persona"><i class="fa-solid fa-file-lines"></i></a>
+						</td>
 					</tr>
-				</thead>
-				<tbody>
-					{% for persona in personas %}
-						<tr>
-							<td>{{ persona.orden }}</td>
-							<td>
-								{% if persona.foto  %}
-									<img src="{% get_media_prefix %}{{ persona.foto }}" height='50' width='50' />
-								{% else %}
-									<img src="{% get_media_prefix %}bosquetaoista/nophoto.jpg"  height='50' width='50' alt="" />
-								{% endif %}
-								{{ persona.apellido }}, {{ persona.nombre }}
-							</td>
-							<td>{{ persona.grado }}</td>
-							<td>
-								<a href="{% url 'persona_am' persona.id %}" name="c3" title="Modificar Persona"><i class="fa fa-pencil"></i></a>
-							</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
-		</div>
+				{% endfor %}
+			</tbody>
+		</table>
 	</div>
 
 	<div class="clear" style="margin-bottom:40px;"></div>

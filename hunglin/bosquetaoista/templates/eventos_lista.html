@@ -13,7 +13,6 @@
 	<table border="1" rules="rows" id="eventos_lista" >
 		<thead>
 			<tr>
-				<td width="10%">ID</td>
 				<td width="20%">Tipo</td>
 				<td width="30%">Nombre</td>
 				<td width="30%">Descripción</td>
@@ -23,7 +22,6 @@
 		<tbody>
 			{% for evento in eventos %}
 				<tr data-type="element" data-id={{ evento.id }}>
-					<td class="hover" data-type="id">{{ evento.id }}</td>
 					<td class="hover" data-type="id">{{ evento.tipo }}</td>
 					<td class="hover" data-type="name">{{ evento.nombre }}</td>
 					<td class="hover" data-type="name">{{ evento.descripcion }}</td>

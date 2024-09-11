@@ -11,7 +11,6 @@
 	<table border="1" rules="rows" id="casas_lista" >
 		<thead>
 			<tr>
-				<td width="5%">Id</td>
 				<td width="20%">Estado</td>
 				<td width="20%">Apellido</td>
 				<td width="20%">Nombre</td>
@@ -22,7 +21,6 @@
 		<tbody>
 			{% for cursante in cursantes %}
 				<tr data-type="element" data-id={{ cursante.0 }} >
-					<td>{{ cursante.0 }}</td>
 					<td>{{ cursante.1 }}</td>
 					<td data-type="apellido">{{ cursante.2 }}</td>
 					<td data-type="nombre">{{ cursante.3 }}</td>

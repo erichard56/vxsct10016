@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from bosquetaoista.models import Grado, Casa, Persona, TipoDoc
 from bosquetaoista.models import TipoEvento, Evento, Agenda, Cursante
 from bosquetaoista.models import TipoExtra, PersonaExtra, TipoEstado, Frase
-from django.utils.html import format_html
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length = 65)
@@ -73,7 +72,7 @@ class PersonaForm(forms.ModelForm):
 				'fechaingreso':'Fecha Ingreso', 
 				'fechaegreso':'Fecha Egreso',
 				'celular':'Número de Celular', 
-				'tipodoc':'Tipo de Documento`', 
+				'tipodoc':'Tipo de Documento', 
 				'nrodoc':'Número de Documento',
 				'foto':'Foto',
 				'certificado':'Certificado',
@@ -101,17 +100,27 @@ class TipoExtraForm(forms.ModelForm):
 			'nombre':'Nombre',
 			'descripcion':'Descripción'
 		}
+		widgets = {
+			'nombre':forms.TextInput(attrs={'style':'width:300px'}),
+			'descripcion':forms.TextInput(attrs={'style':'width:300px'}),
+		}
+
 
 class PersonaExtraForm(forms.ModelForm):
 	class Meta:
 		model = PersonaExtra
 		fields = {
-			'comentario', 'tipoextra', 
+			'tipoextra', 'comentario',
 		}
 		labels ={
 			'tipoextra':'Extra',
 			'comentario':'Comentario',
 		}
+		widgets = {
+			'tipoextra':forms.Select(attrs={'style':'width:300px'}),
+			'comentario':forms.Textarea(attrs={'style':'width:300px', 'rows':4, 'columns':80 }),
+		}
+
 
 
 class TipoEventoForm(forms.ModelForm):
@@ -132,6 +141,11 @@ class EventoForm(forms.ModelForm):
 				'nombre':'Nombre',
 				'descripcion':'Descripción'
 	    }
+		widgets = {
+			'tipo':forms.Select(attrs={'style':'width:300px'}),
+			'nombre':forms.TextInput(attrs={'style':'width:300px'}),
+			'descripcion':forms.TextInput(attrs={'style':'width:300px'}),
+		}
 
 class AgendaForm(forms.ModelForm):
 	class Meta:
@@ -142,6 +156,11 @@ class AgendaForm(forms.ModelForm):
 				'fecha':'Fecha',
 				'orador':'Orador'
 	    }
+		widgets = {
+			'evento':forms.Select(attrs={'style':'width:300px'}),
+			'fecha':forms.DateInput(attrs={'style':'width:300px'}),
+			'orador':forms.Select(attrs={'style':'width:300px'}),
+		}
 
 class CursanteForm(forms.ModelForm):
 	class Meta:
@@ -163,3 +182,4 @@ class FraseForm(forms.ModelForm):
 				'frase':'Frase',
 				'detalle':'Detalle'
 	    }
+

@@ -54,27 +54,27 @@
 			{% endif %}
 			{% for persona in personas %}
 				<tr data-type="element">
-					<td class="hover" >{{ persona.0.orden }}</td>
-					<td class="hover" >{{ persona.0.estado }}</td>
+					<td class="hover" >{{ persona.orden }}</td>
+					<td class="hover" >{{ persona.estado }}</td>
 					<td class="hover">
-						{% if persona.0.foto %}
-							<img src="{% get_media_prefix %}{{ persona.0.foto }}" height='50' width='50' />
+						{% if persona.foto %}
+							<img src="{{ persona.foto.url }}" height='50' width='50' />
 						{% else %}
 							<img src="{% get_media_prefix %}bosquetaoista/nophoto.jpg" height='50' width='50' />
 						{% endif %}
-						{{ persona.0.apellido }}, {{ persona.0.nombre }}
+						{{ persona.apellido }}, {{ persona.nombre }}
 					</td>
-					<td class="hover" data-type="name">{{ persona.0.grado }}</td>
-					<td class="hover" data-type="name">{{ persona.0.casa_practica }}</td>
+					<td class="hover" data-type="name">{{ persona.grado }}</td>
+					<td class="hover" data-type="name">{{ persona.casa_practica }}</td>
 					<td>
 						{% if request.user.is_superuser or request.user.is_staff %}
-							<a href="{% url 'persona_am' persona.0.id %}" title="Modificar Persona"><i class="fa fa-pencil"></i></a>
-							<a href="{% url 'persona_detalle' persona.0.id %}" title="Detalles Persona"><i class="fa-solid fa-file-lines"></i></a>
-							<a href="{% url 'persona_tipoextras_lista' persona.0.id %}" name="c3" title="Información Extra"><i class="fa fa-info"></i></a>
-							{% if persona.0.estado.nombre == 'Activo' %}
-								<a href="{% url 'persona_cambia_estado' persona.0.id %}" onclick="return confirm('Esta seguro?')" title="Marcar No Activo"><i class="fa-regular fa-face-smile"></i></a>
+							<a href="{% url 'persona_am' persona.id %}" title="Modificar Persona"><i class="fa fa-pencil"></i></a>
+							<a href="{% url 'persona_detalle' persona.id %}" title="Detalles Persona"><i class="fa-solid fa-file-lines"></i></a>
+							<a href="{% url 'persona_tipoextras_lista' persona.id %}" name="c3" title="Información Extra"><i class="fa fa-info"></i></a>
+							{% if persona.estado.nombre == 'Activo' %}
+								<a href="{% url 'persona_cambia_estado' persona.id %}" onclick="return confirm('Esta seguro?')" title="Marcar No Activo"><i class="fa-regular fa-face-smile"></i></a>
 							{% else %}
-								<a href="{% url 'persona_cambia_estado' persona.0 %}" onclick="return confirm('Esta seguro?')" title="Marcar Activo"><i class="fa-solid fa-face-frown"></i></a>
+								<a href="{% url 'persona_cambia_estado' persona.id %}" onclick="return confirm('Esta seguro?')" title="Marcar Activo"><i class="fa-solid fa-face-frown"></i></a>
 							{% endif %}
 						{% endif %}
 					</td>

@@ -38,7 +38,7 @@
 					{% if request.user.is_superuser %}
 						<a href="{% url 'registro' %}" title="Registro"><i class="fa-regular fa-address-card"></i> Registro</a>
 					{% endif %}
-					<a href="{% url 'ayuda' %}" title="Ayuda"><i class="fa-solid fa-question"></i> Ayuda</a>
+					<!-- <a href="{ % url 'ayuda' %}" title="Ayuda"><i class="fa-solid fa-question"></i> Ayuda</a> -->
 					<a href="{% url 'salir' %}" title="Salir"><i class="fa-solid fa-arrow-right-from-bracket"></i> Salir</a>
 				</div>
 
@@ -55,10 +55,10 @@
 					{% if request.user.is_superuser %}
 						<li {% if pagina == 10 or pagina == 11 %} class="active" {% endif %}><a href="{% url 'agendas_lista' %}" title="Agenda"><i class="fa-solid fa-calendar-days"></i> Agenda</a></li>
 						<li {% if pagina == 8 or pagina == 9 %} class="active" {% endif %}><a href="{% url 'eventos_lista' %}" title="Eventos"><i class="fa fa-list-ul"></i> Eventos</a></li>
-						<li {% if pagina == 4 %} class="active" {% endif %}><a href="{% url 'casas_lista' %}" title="Casas"><i class="fa fa-list-ul"></i> Casas</a></li>
-						<li {% if pagina == 2 %} class="active" {% endif %}><a href="{% url 'grados_lista' %}" title="Grados"><i class="fa fa-list-ul"></i> Grados</a></li>
+						<li {% if pagina == 4 %} class="active" {% endif %}><a href="{% url 'casas_lista' %}" title="Casas"><i class="fa-solid fa-house-user"></i> Casas</a></li>
+						<li {% if pagina == 2 %} class="active" {% endif %}><a href="{% url 'grados_lista' %}" title="Grados"><i class="fa-solid fa-graduation-cap"></i> Grados</a></li>
 						<li {% if pagina == 12 or pagina == 13 %} class="active" {% endif %}><a href="{% url 'tipoeventos_lista' %}" title="Agenda"><i class="fa fa-list-ul"></i> Tipo Eventos</a></li>
-						<li {% if pagina == 14 or pagina == 15 %} class="active" {% endif %}><a href="{% url 'tipoextras_lista' %}" title="Agenda"><i class="fa fa-list-ul"></i> Tipo Extras</a></li>
+						<li {% if pagina == 14 or pagina == 15 %} class="active" {% endif %}><a href="{% url 'tipoextras_lista' %}" title="Agenda"><i class="fa fa-list-ul"></i> Extras</a></li>
 					{% endif %}
 				</ul>
 			</div>

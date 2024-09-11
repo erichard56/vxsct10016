@@ -285,11 +285,11 @@ def personas_lista(request, tipo):
 		yosoy = None
 		tipoestado = TipoEstado.objects.get(nombre='Activo')
 		if (tipo == 0):
-			todos = Persona.objects.all().order_by('estado', 'orden') 
+			personas = Persona.objects.all().order_by('estado', 'orden') 
 		elif (tipo == 1):
-			todos = Persona.objects.filter(estado=tipoestado.id).order_by('estado', 'orden') 
+			personas = Persona.objects.filter(estado=tipoestado.id).order_by('estado', 'orden') 
 		else:
-			todos = Persona.objects.exclude(estado=tipoestado.id).order_by('estado', 'orden') 
+			personas = Persona.objects.exclude(estado=tipoestado.id).order_by('estado', 'orden') 
 
 	elif (request.user.is_staff):
 		'''
@@ -300,9 +300,9 @@ def personas_lista(request, tipo):
 		yosoy = Persona.objects.filter(usuario=request.user.username).first()
 		if (yosoy):
 			if (yosoy.responsable_casa):
-				todos = Persona.objects.filter(casa_practica=yosoy.responsable_casa_id).order_by('estado', 'orden') 
+				personas = Persona.objects.filter(casa_practica=yosoy.responsable_casa_id).order_by('estado', 'orden') 
 			else:
-				todos = None
+				personas = None
 		else:
 			messages.error(request, f'No es usuario')
 			return(redirect('home'))
@@ -314,21 +314,13 @@ def personas_lista(request, tipo):
 		estado_id = int(request.POST['estado'])
 		busq = request.POST['busca']
 		if (busq):
-			todos = Persona.objects.filter(Q(apellido__icontains=busq) | Q(nombre__icontains=busq)) 
+			personas = Persona.objects.filter(Q(apellido__icontains=busq) | Q(nombre__icontains=busq)) 
 		else:
 			if (estado_id == 0):
-				todos = Persona.objects.all().order_by('orden') 
+				personas = Persona.objects.all().order_by('orden') 
 			else:
-				todos = Persona.objects.filter(estado_id=estado_id).order_by('orden') 
+				personas = Persona.objects.filter(estado_id=estado_id).order_by('orden') 
 
-	personas = []
-	foto = None
-	for todo in todos:
-	#	if (todo.foto):
-	#		foto = base64.b64encode(todo.foto).decode()
-	#	else:
-	#	 	foto = None
-		personas.append([todo, foto])
 	ctx = { 'pagina':6, 'yosoy':yosoy, 'personas':personas, 'estados':estados }
 	return(render(request, 'personas_lista.html', ctx))
 
@@ -372,14 +364,12 @@ def persona_am(request, id):
 		if (id == 0):
 			form = PersonaForm()
 			titulo = 'Nueva Persona'
-			foto = ''
 		else:
 			persona = Persona.objects.get(pk = id)
 			form = PersonaForm(instance=persona)
 			titulo = f'Modificación Persona'
-			foto = None
 		ctx = { 'pagina':6, 'titulo':titulo, 'form':form, 'persona':persona, 'pedirfoto':'pedirfoto' }
-		return(render(request, 'persona_am.html', ctx))
+		return(render(request, 'general_am.html', ctx))
 
 	elif (request.method == 'POST'):
 		form = PersonaForm(data=request.POST, files=request.FILES)
@@ -415,15 +405,12 @@ def persona_am(request, id):
 			nrodoc = request.POST['nrodoc']
 			if (nrodoc):
 				persona.nrodoc = nrodoc
-			#foto = request.FILES.get('photo', False)
-			#if (foto):
-			#	if (persona.foto):
-			#		max_size = 200 * 1014 * 1024
-			#		if (len(persona.foto) > max_size):
-			#			messages.error(request, f'Foto demasiado grande ({len(persona.foto)}), Máximo {max_size}.')
-			#			return(redirect('/persona_am/' + str(id)))
-			foto = request.FILES.get('foto',False)
+			max_size = 200 * 1024 * 1024
+			foto = request.FILES.get('foto', False)
 			if (foto):
+				if (len(foto) > max_size):
+					messages.error(request, f'Foto demasiado grande ({len(foto)}), Máximo {max_size}.')
+					return(redirect('/persona_am/' + str(id)))
 				persona.foto = request.FILES['foto']
 			certificado = request.FILES.get('certificado',False)
 			if (certificado):

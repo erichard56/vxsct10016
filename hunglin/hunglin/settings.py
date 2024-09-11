@@ -30,7 +30,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ '45.162.169.97', 'vxsct10016.avnam.net' ]
+ALLOWED_HOSTS = [ '45.162.169.97', 'vxsct10016.avnam.net', 'bosquetaoista.com.ar', 'hunglin.com.ar', 'bosquetaoista.com', '*' ]
 
 # Application definition
 

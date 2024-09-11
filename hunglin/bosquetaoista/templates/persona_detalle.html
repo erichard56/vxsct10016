@@ -11,73 +11,124 @@
 		<table border="1" rules="rows" id="casas_lista" >
 			<thead>
 				<tr>
-					<td width="30%">Imagen</td>
-					<td width="70%">Datos</td>
+					<td width="40%">Imagen</td>
+					<td width="60%">Datos</td>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td>
 						{% if persona.foto %}
-							<img src="{% get_media_prefix %}{{ persona.foto }}" height='200' width='200' />
+							<img src="{{ persona.foto.url }}" heigth='300' width='300' />
 						{% else %}
-							<img src="{% get_media_prefix %}images/nophoto.jpg" height='200' width='200' alt="" />
+							<img src="{% get_media_prefix %}bosquetaoista/nophoto.jpg" height='300' width='300' alt="" />
 						{% endif %}
+						<br> <br>
 						{% if persona.certificado  %}
-							<img src="{% get_media_prefix %}{{ persona.certificado  }}" height='200' width='200' />
+							<img src="{{ persona.certificado.url }}" height='300' width='300' />
 						{% else %}
-							<img src="{% get_media_prefix %}bosquetaoista/nocert.png" height='200' width='200' alt="" />
+							<img src="{% get_media_prefix %}bosquetaoista/nocert.png" height='300' width='300' alt="" />
 						{% endif %}
 					</td>
 					<td>
-						<div class="row align-items-start">
-							<div class="col">Orden</div>
-							<div class="col">{{ persona.orden }}</div>
-						</div>
-						<div class="row align-items-start">
-							<div class="col">Estado</div>
-							<div class="col">{{ persona.estado }}</div>
-						</div>
-						<div class="row align-items-start">
-							<div class="col">Grado</div>
-							<div class="col">{{ persona.grado }}</div>
-						</div>
-						<div class="row align-items-start">
-							<div class="col">Casa Práctica</div>
-							<div class="col">{{ persona.casa_practica }}</div>
-						</div>
-						<div class="row align-items-start">
-							<div class="col">Responsable de Casa</div>
-							<div class="col">{{ persona.responsable_casa }}</div>
-						</div>
-						<div class="row align-items-start">
-							<div class="col">Dirección</div>
-							<div class="col">{{ persona.direccion }}</div>
-						</div>
-						<div class="row align-items-start">
-							<div class="col">Localidad</div>
-							<div class="col">{{ persona.localidad }} ({{persona.codigo_postal }})</div>
-						</div>
-						<div class="row align-items-start">
-							<div class="col">e-mail</div>
-							<div class="col">{{ persona.email }}</div>
-						</div>
-						<div class="row align-items-start">
-							<div class="col">Fecha de Nacimiento</div>
-							<div class="col">{{ persona.fechanacimiento|date:'d-m-Y' }}</div>
-						</div>
-						<div class="row align-items-start">
-							<div class="col">Fecha de Ingreso</div>
-							<div class="col">{{ persona.fechaingreso|date:'d-m-Y' }}</div>
-						</div>
-						<div class="row align-items-start">
-							<div class="col">Fecha de Egreso</div>
-							<div class="col">{{ persona.fechaegreso|date:'d-m-Y' }}</div>
-						</div>
-						<div class="row align-items-start">
-							<div class="col">Documento</div>
-							<div class="col">{{ persona.tipodoc }} {{ persona.nrodoc }}</div>
-						</div>
+											<table>
+							<tr>
+								<td>
+									<div class="row align-items-start">
+										<div class="col">Orden</div>
+										<div class="col">{{ persona.orden }}</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="row align-items-start">
+										<div class="col">Estado</div>
+										<div class="col">{{ persona.estado }}</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="row align-items-start">
+										<div class="col">Grado</div>
+										<div class="col">{{ persona.grado }}</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="row align-items-start">
+										<div class="col">Casa Práctica</div>
+										<div class="col">{{ persona.casa_practica }}</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="row align-items-start">
+										<div class="col">Responsable de Casa</div>
+										<div class="col">{{ persona.responsable_casa }}</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="row align-items-start">
+										<div class="col">Dirección</div>
+										<div class="col">{{ persona.direccion }}</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="row align-items-start">
+										<div class="col">Localidad</div>
+										<div class="col">{{ persona.localidad }} ({{persona.codigo_postal }})</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="row align-items-start">
+										<div class="col">e-mail</div>
+										<div class="col">{{ persona.email }}</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="row align-items-start">
+										<div class="col">Fecha de Nacimiento</div>
+										<div class="col">{{ persona.fechanacimiento|date:'d-m-Y' }}</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="row align-items-start">
+										<div class="col">Fecha de Ingreso</div>
+										<div class="col">{{ persona.fechaingreso|date:'d-m-Y' }}</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="row align-items-start">
+										<div class="col">Fecha de Egreso</div>
+										<div class="col">{{ persona.fechaegreso|date:'d-m-Y' }}</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="row align-items-start">
+										<div class="col">Documento</div>
+										<div class="col">{{ persona.tipodoc }} {{ persona.nrodoc }}</div>
+									</div>
+								</td>
+							</tr>
+						</table>
 					</td>
 				</tr>
 			</tbody>

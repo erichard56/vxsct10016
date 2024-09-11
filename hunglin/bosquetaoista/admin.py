@@ -2,7 +2,6 @@ from django.contrib import admin
 from bosquetaoista.models import Persona, Grado, Casa, \
 	TipoEvento, Evento, Agenda, Cursante, TipoExtra, \
 		PersonaExtra, TipoEstado, TipoDoc, Frase
-from django.utils.html import format_html
 
 # Register your models here.
 
