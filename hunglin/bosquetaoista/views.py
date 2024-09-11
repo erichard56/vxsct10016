@@ -292,9 +292,11 @@ def personas_lista(request, tipo):
 			todos = Persona.objects.exclude(estado=tipoestado.id).order_by('estado', 'orden') 
 
 	elif (request.user.is_staff):
-		# si no es superuser, pero es staff, averiguo si es responsable de casa. 
-		# si es responsable de casa, muestro a todas las personas de esa casa
-		# si no es responsable de casa, no muestro nada
+		'''
+			si no es superuser, pero es staff, averiguo si es responsable de casa. 
+			si es responsable de casa, muestro a todas las personas de esa casa
+			si no es responsable de casa, no muestro nada
+		'''
 		yosoy = Persona.objects.filter(usuario=request.user.username).first()
 		if (yosoy):
 			if (yosoy.responsable_casa):
@@ -377,11 +379,11 @@ def persona_am(request, id):
 			titulo = f'Modificación Persona'
 			foto = None
 		ctx = { 'pagina':6, 'titulo':titulo, 'form':form, 'persona':persona, 'pedirfoto':'pedirfoto' }
-		return(render(request, 'general_am.html', ctx))
+		return(render(request, 'persona_am.html', ctx))
 
 	elif (request.method == 'POST'):
 		form = PersonaForm(data=request.POST, files=request.FILES)
-		if (form.is_valid()):
+		if (True):			# (form.is_valid()):
 			if (id == 0):
 				persona = Persona()
 			else:
@@ -420,9 +422,12 @@ def persona_am(request, id):
 			#		if (len(persona.foto) > max_size):
 			#			messages.error(request, f'Foto demasiado grande ({len(persona.foto)}), Máximo {max_size}.')
 			#			return(redirect('/persona_am/' + str(id)))
-			foto = request.FILES['photo']
+			foto = request.FILES.get('foto',False)
 			if (foto):
-				persona.foto = foto
+				persona.foto = request.FILES['foto']
+			certificado = request.FILES.get('certificado',False)
+			if (certificado):
+				persona.certificado = request.FILES['certificado']
 			persona.save()
 		else:
 			for e in form.errors:

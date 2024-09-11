@@ -23,6 +23,11 @@
 						{% else %}
 							<img src="{% get_media_prefix %}images/nophoto.jpg" height='200' width='200' alt="" />
 						{% endif %}
+						{% if persona.certificado  %}
+							<img src="{% get_media_prefix %}{{ persona.certificado  }}" height='200' width='200' />
+						{% else %}
+							<img src="{% get_media_prefix %}bosquetaoista/nocert.png" height='200' width='200' alt="" />
+						{% endif %}
 					</td>
 					<td>
 						<div class="row align-items-start">
